@@ -1,0 +1,49 @@
+ADD AND COPY
+docker images
+docker ps
+docker ps -a
+docker ps -aq --- to list the containers
+docker rm $(docker ps -aq) --to delete the stopped containers  
+docker images -q
+docker run -it "image id"
+ctrl+pq --- for coming out from container
+docker exec -it 'container-id' /bin/bash
+ps -eq
+
+
+docker run -d -p 80:80 nginx-custom:1.0
+   28  docker ps
+   29  curl http://localhost:8080
+   30  curl http://localhost:80
+   31  docker ps -a
+   32  docker kill eba3c6edfb2f
+   33  docker rm eba3c6edfb2f
+   34  docker images
+   35  docker rmi nginx-custom:1.0
+   36  docker images
+   37  docker ps -a
+   38  docker build -t nginx-sample:1.0 .
+   39  docker images
+   40  docker run -d -p 8080:80 nginx-sample:1.0
+   41  curl http://localhost:8080
+   42  history
+
+
+sudo usermod -aG docker $USER
+sudo chmod 666 /var/run/docker.sock
+
+docker network ls
+docker swarm init --advertise-addr 'public ip'
+docker swarm join --token
+
+docker node ls
+docker pull nginx
+docker service create --replicas 3 -p 80:80 --name=service1 nginx  
+docker service ls
+docker service ps service1 
+docker service scale service1=15 'for scale up'
+docker service scale service1=5  'for scale down'
+docker service update --image nginx:1.14.0 service1
+
+
+18.206.36.72
